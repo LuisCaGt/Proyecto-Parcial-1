@@ -29,16 +29,18 @@ codigoEmpleado int(50) not null primary key,
 nombreEmpleado varchar(10)not null,
 apellidoEmpleado varchar(10)not null,
 sueldoEmpleado varchar(10)not null,
-estadoEmpleado varchar(8)not null)ENGINE=INNODB;
+estadoEmpleado varchar(8)not null,
+FOREIGN KEY (CODIGO_PUESTO) REFERENCES PUESTOS(CODIGO_PUESTO),
+FOREIGN KEY (CODIGO_DEPARTAMENTO) REFERENCES DEPARTAMENTOS(CODIGO_DEPARTAMENTO),
+FOREIGN KEY (CODIGO_SALARIO) REFERENCES SALARIOS(CODIGO_SALARIO),
+)ENGINE=INNODB;
+
 create table bajasEmpleado(
 codigoEmpleado int(50),
 nombreEmpleado varchar(10),
 apellidoEmpleado varchar(10),
 sueldoEmpleado varchar(10),
 estadoEmpleado varchar(8) not null,
-FOREIGN KEY (CODIGO_PUESTO) REFERENCES PUESTOS(CODIGO_PUESTO),
-FOREIGN KEY (CODIGO_DEPARTAMENTO) REFERENCES DEPARTAMENTOS(CODIGO_DEPARTAMENTO),
-FOREIGN KEY (CODIGO_SALARIO) REFERENCES SALARIOS(CODIGO_SALARIO),
 FOREIGN KEY (codigoEmpleado) REFERENCES baseEmpleados(codigoEmpleado),
 FOREIGN KEY (nombreEmpleado) REFERENCES nombreEmpleados(codigoEmpleado),
 FOREIGN KEY (apellidoEmpleado) REFERENCES apellidoEmpleados(codigoEmpleado),
