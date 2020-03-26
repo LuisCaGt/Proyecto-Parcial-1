@@ -26,14 +26,21 @@ CODIGO_PUESTOS VARCHAR(5) NOT NULL,
 CODIGO_DEPARTAMENTO VARCHAR(5) NOT NULL,
 CODIGO_SALARIO VARCHAR(5) NOT NULL,
 codigoEmpleado int(50) not null primary key,
-nombreEmpleado varchar(10)not null,
-apellidoEmpleado varchar(10)not null,
-sueldoEmpleado varchar(10)not null,
-estadoEmpleado varchar(8)not null,
+nombreEmpleado varchar(10)not null primary key,
+apellidoEmpleado varchar(10)not null primary key,
+sueldoEmpleado varchar(10)not null primary key,
+estadoEmpleado varchar(8)not null ,
 FOREIGN KEY (CODIGO_PUESTO) REFERENCES PUESTOS(CODIGO_PUESTO),
 FOREIGN KEY (CODIGO_DEPARTAMENTO) REFERENCES DEPARTAMENTOS(CODIGO_DEPARTAMENTO),
 FOREIGN KEY (CODIGO_SALARIO) REFERENCES SALARIOS(CODIGO_SALARIO),
 )ENGINE=INNODB;
+
+create table altasempleado
+(
+foreign key (codigoEmpleado) references EMPLEADO(codigoEmpleado),
+foreign key (nombreEmpleado) references EMPLEADO(nombreEmpleado),
+foreign key (apellidoEmpleado) references EMPLEADO(apellidoEmpleado),
+foreign key (sueldoEmpleado) references EMPLEADO(sueldoEmpleado))ENGINE=INNODB;
 
 create table bajasEmpleado(
 codigoEmpleado int(50),
@@ -41,8 +48,8 @@ nombreEmpleado varchar(10),
 apellidoEmpleado varchar(10),
 sueldoEmpleado varchar(10),
 estadoEmpleado varchar(8) not null,
-FOREIGN KEY (codigoEmpleado) REFERENCES baseEmpleados(codigoEmpleado),
-FOREIGN KEY (nombreEmpleado) REFERENCES nombreEmpleados(codigoEmpleado),
-FOREIGN KEY (apellidoEmpleado) REFERENCES apellidoEmpleados(codigoEmpleado),
-FOREIGN KEY (sueldoEmpleado) REFERENCES sueldoEmpleados(codigoEmpleado)
+FOREIGN KEY (codigoEmpleado) REFERENCES EMPLEADO(codigoEmpleado),
+FOREIGN KEY (nombreEmpleado) REFERENCES EMPLEADO(nombreEmpleado),
+FOREIGN KEY (apellidoEmpleado) REFERENCES EMPLEADO(apellidoEmpleado),
+FOREIGN KEY (sueldoEmpleado) REFERENCES EMPLEADO(sueldoEmpleado)
 )ENGINE=INNODB;
