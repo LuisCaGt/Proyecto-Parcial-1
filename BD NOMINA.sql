@@ -37,10 +37,28 @@ FOREIGN KEY (CODIGO_SALARIO) REFERENCES SALARIOS(CODIGO_SALARIO),
 
 create table altasempleado
 (
+codigoEmpleado int(50) not null,
+nombreEmpleado varchar(10)not null,
+apellidoEmpleado varchar(10)not null,
+sueldoEmpleado varchar(10)not null,
 foreign key (codigoEmpleado) references EMPLEADO(codigoEmpleado),
 foreign key (nombreEmpleado) references EMPLEADO(nombreEmpleado),
 foreign key (apellidoEmpleado) references EMPLEADO(apellidoEmpleado),
 foreign key (sueldoEmpleado) references EMPLEADO(sueldoEmpleado))ENGINE=INNODB;
+
+CREATE TABLE chequesEmpleados(
+codigocheques varchar (10) primary key,
+codigoEmpleado int(50) not null ,
+nombreEmpleado varchar(10)not null ,
+apellidoEmpleado varchar(10)not null ,
+sueldoEmpleado varchar(10)not null ,
+estadoEmpleado varchar(8)not null ,
+foreign key (codigoEmpleado) references EMPLEADO(codigoEmpleado),
+foreign key (nombreEmpleado) references EMPLEADO(nombreEmpleado),
+foreign key (apellidoEmpleado) references EMPLEADO(apellidoEmpleado),
+foreign key (sueldoEmpleado) references EMPLEADO(sueldoEmpleado),
+foreign key (estadoEmpleado) references EMPLEADO(estadoEmpleado)
+) Engine = INNODB;
 
 create table bajasEmpleado(
 codigoEmpleado int(50),
